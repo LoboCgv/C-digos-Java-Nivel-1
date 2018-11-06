@@ -22,18 +22,23 @@ public class CrudUsuario {
      */
     public static void main(String[] args) throws IOException, SQLException {
         // TODO code application logic here
-        UsuarioController userCont=new UsuarioController();
+        UsuarioController userCont = new UsuarioController();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int opt;
-        do{
-            System.out.println("1 para ingresar");
-            opt=Integer.parseInt(br.readLine());
-            if(opt==1){
-                userCont.setAccion("agregar");
-            }
-            userCont.ejecutar();
-            userCont.setAccion("");
-        }while(opt!=3);
+        //solicitar nombre de usuario y contraseña
+        if (userCont.validar()) {
+            do {
+                System.out.println("1 para ingresar");
+                opt = Integer.parseInt(br.readLine());
+                if (opt == 1) {
+                    userCont.setAccion("agregar");
+                }
+                userCont.ejecutar();
+                userCont.setAccion("");
+            } while (opt != 3);
+        } else {
+            //esc ribir usaurio hbasfkj
+        }
     }
-    
+
 }
