@@ -23,7 +23,7 @@ public class UsuarioController {
 
     public UsuarioController() {
     }
-
+    
     public UsuarioController(String accion) {
         this.accion = accion;
     }
@@ -54,34 +54,22 @@ public class UsuarioController {
             System.out.println(lista.get(x).toString());
         }
     }
-
-    public void ejecutar() throws IOException, SQLException {
+    
+    public void ejecutar() throws IOException, SQLException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //Ya tenemos el "lector"
-        switch (this.accion) {
+        switch (this.accion){
             case "agregar":
                 System.out.println("Ingrese nombre usaurio");
-                String nombreUsuario = br.readLine();
+                String nombreUsuario=br.readLine();
                 System.out.println("Ingrese password");
-                String passwd = br.readLine();
+                String passwd=br.readLine();
                 System.out.println("Ingrese perfil");
-                String perfil = br.readLine();
-                agregarUsuario(nombreUsuario, passwd, perfil);
-                break;
+                String perfil=br.readLine();
+                agregarUsuario(nombreUsuario,passwd,perfil);
+             break;
             case "desplegar":
                 desplegarUsuarios();
                 break;
         }
-    }
-
-    public boolean validar() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //Ya tenemos el "lector"
-        System.out.println("Ingrese nombre usaurio");
-        String nombreUsuario = br.readLine();
-        System.out.println("Ingrese password");
-        String passwd = br.readLine();
-        DAOUsuario dao=new DAOUsuario();
-        boolean flag= dao.validarUsuario(nombreUsuario,passwd);
-       // System.out.println(flag);
-        return flag;
     }
 }

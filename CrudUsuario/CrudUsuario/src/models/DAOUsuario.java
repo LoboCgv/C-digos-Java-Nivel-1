@@ -88,29 +88,6 @@ public class DAOUsuario {
         }
         return lista;
     }
-
-    public boolean validarUsuario(String nombreUsuario, String passwd) {
-        ResultSet rs = null;
-        boolean flag = false;
-        try {
-            
-            PreparedStatement stmt = null;
-            String consulta = "Select * from usuarios where nombreUsuario=? and passwd=?";
-            //System.out.println(consulta);
-            con = new Conexion();
-            stmt = con.getConexion().prepareStatement(consulta);
-            stmt.setString(1, nombreUsuario);
-            stmt.setString(2,passwd);
-            rs = stmt.executeQuery();
-            flag=rs.next();
-            rs.close();
-            stmt.close();
-        } catch (SQLException se) {
-            se.printStackTrace();
-        }
-                
-        return flag;
-    }
     
     
     
