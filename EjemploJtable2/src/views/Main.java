@@ -5,6 +5,10 @@
  */
 package views;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author cetecom
@@ -88,6 +92,15 @@ public class Main extends javax.swing.JFrame {
     
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
+        ListarLibros lb;
+        try {
+            lb = new ListarLibros();
+             lb.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+       
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
@@ -121,6 +134,7 @@ public class Main extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Main().setVisible(true);
+                
             }
         });
     }

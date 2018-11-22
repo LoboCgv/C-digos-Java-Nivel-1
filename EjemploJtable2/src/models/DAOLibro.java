@@ -51,9 +51,11 @@ public class DAOLibro {
             String consulta = "Select * from libro where codigo=?";
             stmt = con.getConexion().prepareStatement(consulta);
             stmt.setString(1, codigo);
+            //
             
             rs = stmt.executeQuery();
             if(rs.next()){
+                System.out.println(consulta);
                 l=new Libro(rs.getString("codigo"), rs.getString("nombre"), rs.getString("categoria"), rs.getString("autor"),rs.getString("formato").charAt(0), rs.getBoolean("nuevo"), rs.getInt("pagina"));
             }
             rs.close();

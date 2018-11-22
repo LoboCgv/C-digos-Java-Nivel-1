@@ -20,10 +20,16 @@ public class ModificarLibro extends javax.swing.JFrame {
     /**
      * Creates new form AgregarLibro
      */
-    public ModificarLibro() {
+   // private String codigo;
+   
+  
+    
+    public ModificarLibro(String codigo) {
         initComponents();
+       // System.out.println(this.codigo);
         LibroController lc=new LibroController();
-        Libro l=lc.getLibro("1");
+        Libro l=lc.getLibro(codigo);
+        System.out.println(l);
         if(l!=null){
             jTextField1.setText(l.getCodigo());
             jTextField2.setText(l.getNombre());
@@ -218,7 +224,7 @@ public class ModificarLibro extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModificarLibro().setVisible(true);
+                //new ModificarLibro().setVisible(true);
             }
         });
     }

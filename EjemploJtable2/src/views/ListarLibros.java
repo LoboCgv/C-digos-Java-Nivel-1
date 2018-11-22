@@ -24,7 +24,7 @@ public class ListarLibros extends javax.swing.JFrame {
      */
     public ListarLibros() throws SQLException {
         initComponents();
-        String[] columnas={"Nombre","Autor"};
+        String[] columnas={"codigo","Nombre","Autor"};
         Object[][] data={};
         DefaultTableModel dtm=new DefaultTableModel(data,columnas);
         LibroController lc=new LibroController();
@@ -33,7 +33,7 @@ public class ListarLibros extends javax.swing.JFrame {
         jTable1.setModel(dtm);
         ArrayList<Libro> lista=lc.getData();
         for(int i=0; i<lista.size();i++){
-            Object[] row={lista.get(i).getNombre(),lista.get(i).getAutor()};
+            Object[] row={lista.get(i).getCodigo(),lista.get(i).getNombre(),lista.get(i).getAutor()};
             dtm.addRow(row);
         }
        // Object[] row2={"añfpdljkhsdl","Mario Benedetti"};
@@ -55,6 +55,11 @@ public class ListarLibros extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTable1MouseReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -97,6 +102,16 @@ public class ListarLibros extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTable1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseReleased
+        // TODO add your handling code here:
+        ModificarLibro ml=new ModificarLibro("codigo1");
+        DefaultTableModel dtm=(DefaultTableModel)jTable1.getModel();
+       //  ml.setCodigo((String)dtm.getValueAt(jTable1.getSelectedRow(),0));
+//        System.out.print((String)dtm.getValueAt(jTable1.getSelectedRow(),0));
+        ml.setVisible(true);
+       
+    }//GEN-LAST:event_jTable1MouseReleased
 
     /**
      * @param args the command line arguments
